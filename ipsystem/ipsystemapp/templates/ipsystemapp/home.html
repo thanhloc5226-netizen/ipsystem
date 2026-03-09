@@ -43,8 +43,8 @@
                         Chúng tôi biến những ý tưởng phức tạp thành các giải pháp phần mềm tinh gọn, hiệu quả và được may đo riêng cho từng doanh nghiệp.
                     </p>
                     <div class="flex flex-wrap gap-4 justify-center">
-                        <a href="{% url 'contact' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Bắt đầu ngay</a>
-                        <a href="{% url 'portfolio' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Xem dự án</a>
+                        <a href="{% url 'contact:contact' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Bắt đầu ngay</a>
+                        <a href="{% url 'portfolio:portfolio' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Xem dự án</a>
                     </div>
                 </div>
             </div>
@@ -67,8 +67,8 @@
                         Nâng tầm thương hiệu với website chuyên nghiệp, tốc độ cao và tối ưu trải nghiệm người dùng trên mọi thiết bị.
                     </p>
                     <div class="flex flex-wrap gap-4 justify-center">
-                        <a href="{% url 'service' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Khám phá dịch vụ</a>
-                        <a href="{% url 'contact' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Tư vấn miễn phí</a>
+                        <a href="{% url 'service:service' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Khám phá dịch vụ</a>
+                        <a href="{% url 'contact:contact' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Tư vấn miễn phí</a>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
                         Tự động hoá quy trình làm việc, loại bỏ rào cản vận hành và đột phá năng suất thông qua hệ thống ERP &amp; SaaS hiện đại.
                     </p>
                     <div class="flex flex-wrap gap-4 justify-center">
-                        <a href="{% url 'service' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Giải pháp ERP</a>
-                        <a href="{% url 'contact' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Liên hệ ngay</a>
+                        <a href="{% url 'service:service' %}" class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Giải pháp ERP</a>
+                        <a href="{% url 'contact:contact' %}" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Liên hệ ngay</a>
                     </div>
                 </div>
             </div>
@@ -131,10 +131,10 @@
                 Chúng tôi tập trung vào chuyên môn phần mềm, cung cấp các giải pháp tùy chỉnh vượt trội nhằm tối ưu hóa quy trình vận hành và thúc đẩy sự tăng trưởng bền vững cho doanh nghiệp.
             </p>
             <div class="flex flex-wrap gap-4 mt-4">
-                <a href="{% url 'contact' %}" class="flex min-w-[180px] items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/30">
+                <a href="{% url 'contact:contact' %}" class="flex min-w-[180px] items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/30">
                     Tư vấn giải pháp
                 </a>
-                <a href="{% url 'about' %}" class="flex min-w-[180px] items-center justify-center rounded-xl h-14 px-8 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                <a href="{% url 'about:about' %}" class="flex min-w-[180px] items-center justify-center rounded-xl h-14 px-8 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                     Tìm hiểu thêm
                 </a>
             </div>
@@ -200,7 +200,7 @@
                 <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Dự án tiêu biểu</h2>
                 <h3 class="text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100">Những dự án phần mềm chúng tôi đã thực hiện</h3>
             </div>
-            <a href="{% url 'portfolio' %}" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-lg">
+            <a href="{% url 'portfolio:portfolio' %}" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all text-lg">
                 Xem tất cả dự án <span class="material-symbols-outlined font-bold">arrow_forward</span>
             </a>
         </div>
@@ -252,7 +252,7 @@
             Tham gia cùng hàng trăm doanh nghiệp đã thành công với các giải pháp phần mềm từ IPSystem.
         </p>
         <div class="flex flex-wrap justify-center gap-4 relative z-10">
-            <a href="{% url 'contact' %}" class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-black hover:bg-slate-50 transition-all shadow-xl">
+            <a href="{% url 'contact:contact' %}" class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-black hover:bg-slate-50 transition-all shadow-xl">
                 Bắt đầu dự án ngay
             </a>
         </div>

@@ -113,13 +113,13 @@
                 <a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors {% if request.resolver_match.url_name == 'home' %}text-primary{% endif %}"
                     href="{% url 'home' %}">Trang chủ</a>
                 <a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors {% if request.resolver_match.url_name == 'service' %}text-primary{% endif %}"
-                    href="{% url 'service' %}">Dịch vụ</a>
+                    href="{% url 'service:service' %}">Dịch vụ</a>
                 <a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors {% if request.resolver_match.url_name == 'about' %}text-primary{% endif %}"
-                    href="{% url 'about' %}">Về IPSystem</a>
+                    href="{% url 'about:about' %}">Về IPSystem</a>
                 <a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors {% if request.resolver_match.url_name == 'portfolio' %}text-primary{% endif %}"
-                    href="{% url 'portfolio' %}">Dự án</a>
+                    href="{% url 'portfolio:portfolio' %}">Dự án</a>
                 <a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors {% if request.resolver_match.url_name == 'contact' %}text-primary{% endif %}"
-                    href="{% url 'contact' %}">Liên hệ</a>
+                    href="{% url 'contact:contact' %}">Liên hệ</a>
             </nav>
 
             <!-- Mobile hamburger -->
@@ -131,10 +131,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 py-4 space-y-3">
             <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'home' %}">Trang chủ</a>
-            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'service' %}">Dịch vụ</a>
-            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'about' %}">Về IPSystem</a>
-            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'portfolio' %}">Dự án</a>
-            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'contact' %}">Liên hệ</a>
+            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'service:service' %}">Dịch vụ</a>
+            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'about:about' %}">Về IPSystem</a>
+            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'portfolio:portfolio' %}">Dự án</a>
+            <a class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="{% url 'contact:contact' %}">Liên hệ</a>
         </div>
     </header>
     <!-- ===== END NAVBAR ===== -->
@@ -186,8 +186,8 @@
             <div>
                 <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Công ty</h4>
                 <ul class="space-y-4">
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'about' %}">Về chúng tôi</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'portfolio' %}">Dự án</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="{% url 'about:about' %}">Về chúng tôi</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="{% url 'portfolio:portfolio' %}">Dự án</a></li>
                     <li><a class="hover:text-primary transition-colors" href="#">Tuyển dụng</a></li>
                     <li><a class="hover:text-primary transition-colors" href="#">Tin tức</a></li>
                 </ul>
@@ -195,10 +195,9 @@
             <div>
                 <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Dịch vụ</h4>
                 <ul class="space-y-4">
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'service' %}">Website Doanh nghiệp</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'service' %}">Thương mại điện tử</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'service' %}">Hệ thống quản lý</a></li>
-                    <li><a class="hover:text-primary transition-colors" href="{% url 'service' %}">Phần mềm theo yêu cầu</a></li>
+                    {% for category in category %}
+                    <li><a class="hover:text-primary transition-colors" href="{% url 'service:service' %}">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <div>
