@@ -35,60 +35,9 @@
             },
         }
     </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-
-        /* ===== PAGE TRANSITION ===== */
-        #page-transition-overlay {
-            position: fixed;
-            inset: 0;
-            background: #d41132;
-            z-index: 9999;
-            pointer-events: none;
-
-            /* Bắt đầu: che toàn màn hình (clip từ trái sang phải) */
-            clip-path: inset(0 0 0 0);
-            transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.18, 1);
-        }
-
-        /* Trạng thái đã load xong: thu về bên phải */
-        #page-transition-overlay.slide-out {
-            clip-path: inset(0 0 0 100%);
-        }
-
-        /* Trạng thái chuẩn bị rời trang: kéo từ phải sang phủ toàn màn */
-        #page-transition-overlay.slide-in {
-            clip-path: inset(0 0 0 0);
-            transition: clip-path 0.4s cubic-bezier(0.77, 0, 0.18, 1);
-        }
-
-        /* Nội dung trang fade in sau khi overlay kéo đi */
-        main {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.45s ease 0.25s, transform 0.45s ease 0.25s;
-        }
-        main.page-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== SCROLL REVEAL ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-        .reveal.reveal--left  { transform: translateX(-48px); }
-        .reveal.reveal--right { transform: translateX(48px); }
-        .reveal.reveal--scale { transform: scale(0.92); }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) translateX(0) scale(1);
-        }
-    </style>
-    {% block extra_css %}{% endblock %}
+    {% block extra_css %}
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    {% endblock %}
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
@@ -209,7 +158,7 @@
                     </li>
                     <li class="flex gap-3">
                         <span class="material-symbols-outlined text-primary">call</span>
-                        <span>+84 (28) IPSYSTEM</span>
+                        <span>0764552008</span>
                     </li>
                     <li class="flex gap-3">
                         <span class="material-symbols-outlined text-primary">mail</span>
@@ -230,89 +179,8 @@
 
 </div>
 
-<script>
-    // ===== MOBILE MENU =====
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
-    });
-
-    // ===== PAGE TRANSITION =====
-    const overlay = document.getElementById('page-transition-overlay');
-    const mainEl = document.querySelector('main');
-
-    // Khi trang load xong: kéo overlay ra khỏi màn hình + hiện nội dung
-    window.addEventListener('DOMContentLoaded', () => {
-        // Nhỏ delay để browser vẽ xong trước khi animate
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                overlay.classList.add('slide-out');
-                mainEl.classList.add('page-visible');
-            });
-        });
-    });
-
-    // Khi click vào link nội bộ: kéo overlay vào trước khi chuyển trang
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href]');
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-
-        // Bỏ qua: link ngoài, anchor (#), target blank, javascript:
-        if (
-            !href ||
-            href.startsWith('#') ||
-            href.startsWith('http') ||
-            href.startsWith('mailto') ||
-            href.startsWith('tel') ||
-            link.target === '_blank'
-        ) return;
-
-        e.preventDefault();
-
-        // Kéo overlay vào che màn hình
-        overlay.classList.remove('slide-out');
-        overlay.classList.add('slide-in');
-
-        // Sau khi animation xong thì chuyển trang
-        setTimeout(() => {
-            window.location.href = href;
-        }, 420);
-    });
-</script>
-
-<script>
-    // ===== SCROLL REVEAL =====
-    const revealEls = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Stagger: delay dựa trên vị trí trong nhóm anh em
-                const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
-                const index = siblings.indexOf(entry.target);
-                const delay = index * 90;
-
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay);
-            } else {
-                // Lướt ra khỏi viewport → ẩn lại
-                entry.target.classList.remove('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -48px 0px'
-    });
-
-    revealEls.forEach(el => revealObserver.observe(el));
-</script>
-
+<script src="{% static 'js/base.js' %}"></script>
 {% block extra_js %}{% endblock %}
+
 </body>
 </html>

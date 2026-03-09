@@ -4,20 +4,7 @@
 {% block title %}IPSystem | Thiết kế Phần mềm Chuyên Nghiệp{% endblock %}
 
 {% block extra_css %}
-<style>
-    .carousel-container {
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        overflow-x: hidden;
-    }
-    .carousel-container::-webkit-scrollbar { display: none; }
-    .carousel-item {
-        scroll-snap-align: start;
-        flex-shrink: 0;
-    }
-    .dot { transition: all 0.3s ease; }
-    .dot.active { background-color: #d41132 !important; width: 2.5rem !important; }
-</style>
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -263,27 +250,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    const carousel = document.getElementById('carousel');
-    const dots = document.querySelectorAll('.dot');
-    const total = 3;
-    let current = 0;
-    let autoTimer;
-
-    function goTo(index) {
-        current = (index + total) % total;
-        carousel.scrollLeft = carousel.offsetWidth * current;
-        dots.forEach((d, i) => {
-            d.classList.toggle('active', i === current);
-        });
-    }
-
-    document.getElementById('prevBtn').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-    document.getElementById('nextBtn').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-    dots.forEach(dot => dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index)); resetAuto(); }));
-
-    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
-    function resetAuto() { clearInterval(autoTimer); startAuto(); }
-    startAuto();
-</script>
+    <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

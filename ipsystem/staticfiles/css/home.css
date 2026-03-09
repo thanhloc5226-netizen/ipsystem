@@ -1,0 +1,12 @@
+.carousel-container {
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        overflow-x: hidden;
+    }
+    .carousel-container::-webkit-scrollbar { display: none; }
+    .carousel-item {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+    .dot { transition: all 0.3s ease; }
+    .dot.active { background-color: #d41132 !important; width: 2.5rem !important; }
